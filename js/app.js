@@ -88,7 +88,7 @@ const timer = () => {
 
 function scrollToBottomSmoothly() {
   const scrollStep = 5;
-  const scrollInterval = 10; // milliseconds
+  const scrollInterval = 20; // milliseconds
 
   const scrollHeight = document.body.scrollHeight;
   let scrolled = 0;
