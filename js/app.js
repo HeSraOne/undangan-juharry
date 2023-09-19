@@ -86,29 +86,13 @@ const timer = () => {
   }, 1000);
 };
 
-const scrollToBottomSlowly = (currentScroll, targetScroll, step = 5) => {
-  if (currentScroll < targetScroll) {
-    const newScroll = currentScroll + step;
-    const remainingScroll = targetScroll - newScroll;
+const scrollToBottomSmoothly = () => {
+  const targetScroll = document.body.scrollHeight;
 
-    // Scroll to the bottom if the remaining scroll is less than the step
-    if (remainingScroll < step) {
-      window.scrollTo({
-        top: targetScroll,
-        behavior: "smooth",
-      });
-      return;
-    }
-
-    window.scrollTo({
-      top: newScroll,
-      behavior: "smooth",
-    });
-
-    setTimeout(() => {
-      scrollToBottomSlowly(newScroll, targetScroll);
-    }, 10);
-  }
+  window.scrollTo({
+    top: targetScroll,
+    behavior: "smooth"
+  });
 };
 
 const buka = async () => {
@@ -118,9 +102,9 @@ const buka = async () => {
   await login();
   timer();
 
-  const targetScroll = document.body.scrollHeight;
-  scrollToBottomSlowly(0, targetScroll);
+  scrollToBottomSmoothly();
 };
+
 
 const play = (btn) => {
   if (btn.getAttribute("data-status").toString() != "true") {
