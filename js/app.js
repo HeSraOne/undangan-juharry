@@ -86,14 +86,24 @@ const timer = () => {
   }, 1000);
 };
 
-const scrollToBottomSmoothly = () => {
-  const targetScroll = document.body.scrollHeight;
+function scrollToBottomSmoothly() {
+  const scrollStep = 5;
+  const scrollInterval = 10; // milliseconds
 
-  window.scrollTo({
-    top: targetScroll,
-    behavior: "smooth"
-  });
-};
+  const scrollHeight = document.body.scrollHeight;
+  let scrolled = 0;
+
+  const scroll = () => {
+    scrolled += scrollStep;
+    window.scrollTo(0, scrolled);
+
+    if (scrolled < scrollHeight) {
+      requestAnimationFrame(scroll);
+    }
+  };
+
+  scroll();
+}
 
 const buka = async () => {
   document.getElementById("tombol-musik").style.display = "block";
@@ -102,8 +112,11 @@ const buka = async () => {
   await login();
   timer();
 
-  scrollToBottomSmoothly();
+  setTimeout(() => {
+    scrollToBottomSmoothly();
+  }, 2000); // Scroll smoothly after 2 seconds (adjust as needed)
 };
+
 
 
 const play = (btn) => {
