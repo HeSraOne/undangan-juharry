@@ -88,7 +88,7 @@ const timer = () => {
 
 function scrollToBottomSmoothly() {
   const scrollStep = 10;
-  const scrollInterval = 10; // milliseconds
+  const scrollInterval = 5; // milliseconds
 
   const scrollHeight = document.body.scrollHeight;
   let scrolled = 0;
@@ -114,7 +114,7 @@ const buka = async () => {
 
   setTimeout(() => {
     scrollToBottomSmoothly();
-  }, 2000); // Scroll smoothly after 2 seconds (adjust as needed)
+  }, 1000); // Scroll smoothly after 2 seconds (adjust as needed)
 };
 
 
